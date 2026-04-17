@@ -66,9 +66,9 @@ T2_NAMES   = ["< 0.97 (Calms)","0.97-4.08","4.08-7.00","7.00-11.08","11.08-17.11
 # REALISTIC AIRPORT THEME PALETTE
 TH = {
     "dark": {
-        "bg":"#0f172a", "card_css":"rgba(15, 23, 42, 0.8)", # Tarmac Slate
+        "bg":"#0f172a", "card_css":"rgba(15, 23, 42, 0.8)",
         "brd_css":"rgba(250, 204, 21, 0.3)", "brd2_css":"rgba(255, 255, 255, 0.1)",
-        "acc":"#facc15", "acc2":"#eab308", # Aviation Yellow
+        "acc":"#facc15", "acc2":"#eab308", 
         "gold":"#fbbf24", "suc":"#10b981", "dng":"#ef4444",
         "txt":"#f8fafc", "mut":"#94a3b8",
         "ibg":"rgba(2, 6, 23, 0.7)", "itxt":"#f8fafc",
@@ -81,9 +81,9 @@ TH = {
         "m_poly":"#facc15", "m_pfill":"#a16207",
     },
     "light": {
-        "bg":"#f1f5f9", "card_css":"rgba(255, 255, 255, 0.85)", # Concrete Grey
+        "bg":"#f1f5f9", "card_css":"rgba(255, 255, 255, 0.85)",
         "brd_css":"rgba(2, 132, 199, 0.25)", "brd2_css":"rgba(0, 0, 0, 0.08)",
-        "acc":"#0284c7", "acc2":"#0369a1", # Taxiway Blue
+        "acc":"#0284c7", "acc2":"#0369a1",
         "gold":"#d97706", "suc":"#059669", "dng":"#dc2626",
         "txt":"#0f172a", "mut":"#475569",
         "ibg":"rgba(255, 255, 255, 0.9)", "itxt":"#0f172a",
@@ -115,10 +115,7 @@ def inject_css():
     TXT=T["txt"]; MUT=T["mut"]; IBG=T["ibg"]; ITXT=T["itxt"]
     EBG=T["ebg"]; ETXT=T["etxt"]; PBG=T["pbg"]; PTXT=T["ptxt"]
     
-    # Real Airport Photo Background via Unsplash
     bg_img = "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2500&auto=format&fit=crop"
-    
-    # Dark Mode gets a dark slate overlay, Light Mode gets a light concrete overlay
     overlay = "rgba(15, 23, 42, 0.88)" if dk else "rgba(241, 245, 249, 0.88)"
 
     st.markdown(f"""<style>
@@ -152,11 +149,11 @@ html,body,.stApp,[data-testid="stApp"],[data-testid="stAppViewContainer"]{{
 [data-testid="stSidebarCollapseButton"]{{display:none!important;width:0!important;min-width:0!important;}}
 #MainMenu,header,footer{{visibility:hidden!important;}}
 *,*::before,*::after{{color:{TXT}!important;-webkit-text-fill-color:{TXT}!important;}}
-.stButton>button,.stDownloadButton>button,button[data-testid],.zl-step-num{{
+.stButton>button,button[data-testid],.zl-step-num{{
   color:{'#0f172a' if dk else '#ffffff'}!important; -webkit-text-fill-color:{'#0f172a' if dk else '#ffffff'}!important;
 }}
 .zl-lbl,.zl-sv,.zl-step-title,.zl-type-code,.zl-title em,.zl-eyebrow,.zl-chip,
-.zl-footer-brand,.zl-file-banner b,.zl-cov b,.zl-pass,.zl-dlbl,.zl-sub,
+.zl-footer-brand,.zl-file-banner b,.zl-cov b,.zl-pass,.zl-warn,.zl-fail,.zl-dlbl,.zl-sub,
 .zl-tbl th,.zl-tbl td.dir-cell,.zl-tbl tr.trow td,.zl-freq-hdr{{
   -webkit-text-fill-color:unset!important;
 }}
@@ -235,6 +232,30 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
 .stButton>button:hover{{
   border-color: {T['acc']}!important; background: {'rgba(250, 204, 21, 0.1)' if dk else 'rgba(2, 132, 199, 0.08)'}!important;
   transform:translateY(-2px)!important; box-shadow: 0 8px 24px {'rgba(250, 204, 21, 0.2)' if dk else 'rgba(2, 132, 199, 0.15)'}!important;
+}}
+
+/* Glass Download Buttons Fix */
+.stDownloadButton>button{{
+  background: var(--card)!important;
+  color:{T['acc']}!important;
+  -webkit-text-fill-color:{T['acc']}!important;
+  border: 1px solid {T['brd_css']}!important;
+  border-radius: 12px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  letter-spacing: .05em !important;
+  text-transform: uppercase !important;
+  padding: 0.7rem 1.5rem !important;
+  width: 100% !important;
+  backdrop-filter: var(--blur) !important;
+  transition: all 0.3s ease !important;
+}}
+.stDownloadButton>button:hover{{
+  border-color: {T['acc']}!important;
+  background: {'rgba(250, 204, 21, 0.1)' if dk else 'rgba(2, 132, 199, 0.08)'} !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px {'rgba(250, 204, 21, 0.2)' if dk else 'rgba(2, 132, 199, 0.15)'} !important;
 }}
 
 /* Styled File Uploader */
@@ -333,7 +354,6 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
 .zl-theme-group .stButton>button:hover {{
     color: {T['acc']} !important; -webkit-text-fill-color: {T['acc']} !important;
 }}
-/* The active button gets a solid background */
 .zl-theme-active .stButton>button {{
     background: {'rgba(250, 204, 21, 0.2)' if dk else 'rgba(2, 132, 199, 0.15)'} !important;
     color: {T['acc']} !important; -webkit-text-fill-color: {T['acc']} !important;
@@ -466,7 +486,7 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
   backdrop-filter: var(--blur); box-shadow: var(--shd);
 }}
 .zl-cov b{{color:{T['acc']}!important; -webkit-text-fill-color:{T['acc']}!important; font-size: .9rem;}}
-.zl-pass, .zl-fail{{
+.zl-pass, .zl-fail, .zl-warn{{
   display:inline-flex; align-items:center; gap:.4rem;
   font-family:'JetBrains Mono',monospace; font-size:.7rem; font-weight:800;
   letter-spacing:.1em; text-transform:uppercase; padding:4px 12px; border-radius:99px;
@@ -478,6 +498,10 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
 .zl-fail{{
   background:{'rgba(239,68,68,0.15)' if dk else 'rgba(220,38,38,0.12)'}; border:1px solid {T['dng']};
   color:{T['dng']}!important; -webkit-text-fill-color:{T['dng']}!important;
+}}
+.zl-warn{{
+  background:{'rgba(251,191,36,0.15)' if dk else 'rgba(217,119,6,0.12)'}; border:1px solid {T['gold']};
+  color:{T['gold']}!important; -webkit-text-fill-color:{T['gold']}!important;
 }}
 
 /* ══ DIAGRAM FRAMES ═════════════════════ */
@@ -678,12 +702,14 @@ def process_data(fb, fname, dc, sc_col, dfmt, su):
 #  RUNWAY ANALYSIS
 # ══════════════════════════════════════════════════════════════════════
 def ha(cx): return np.degrees(np.arcsin(min(cx/24.1,1.)))
+
 def rwy_cov(freq,hdg,cx):
     h=ha(cx); t=0.
     for i in range(16):
         d=abs(((i*22.5-hdg+180)%360)-180)
         if d<=h or d>=180-h: t+=freq[i,1:7].sum()
     return min(t,100.)
+
 def best_rwy(freq,cx,excl=None):
     bh,bc=0.,0.
     for hdg in np.arange(0,180,5):
@@ -691,12 +717,22 @@ def best_rwy(freq,cx,excl=None):
         c=rwy_cov(freq,hdg,cx)
         if c>bc: bc,bh=c,hdg
     return float(bh)
+
 def comb_cov(freq,r1,r2,cx):
     h=ha(cx); t=0.
     for i in range(16):
         a=i*22.5; d1=abs(((a-r1+180)%360)-180); d2=abs(((a-r2+180)%360)-180)
         if d1<=h or d1>=180-h or d2<=h or d2>=180-h: t+=freq[i,1:7].sum()
     return min(t,100.)
+
+def best_rwy_combined(freq, r1, cx):
+    bh, bc = 0., 0.
+    for hdg in np.arange(0, 180, 5):
+        if abs(((hdg - r1 + 90) % 180) - 90) < 20: continue
+        c = comb_cov(freq, r1, hdg, cx)
+        if c > bc: bc, bh = c, hdg
+    return float(bh)
+
 def rwy_lbl(hdg):
     e1=int(round(hdg/10))%36 or 36; e2=int(round((hdg+180)/10))%36 or 36
     return f"Runway {e1:02d}/{e2:02d}"
@@ -1040,7 +1076,9 @@ def main():
         with m1: dir_col=st.selectbox("Direction Column",cols,index=di,key="dcol")
         with m2: spd_col=st.selectbox("Speed Column",cols,index=si,key="scol")
         with m3: dir_fmt=st.selectbox("Direction Format",["Degrees (0-360)","Compass (N, NNE ...)"],key="dfmt")
-        with m4: spd_unit=st.selectbox("Input Speed Unit",["km/h","knots","m/s"],key="sunit")
+        
+        # FIXED: Set default input speed unit to knots (index 1)
+        with m4: spd_unit=st.selectbox("Input Speed Unit",["km/h","knots","m/s"],index=1,key="sunit")
 
         st.markdown("<br>",unsafe_allow_html=True)
         st.markdown('<div class="zl-sub">Runway Configuration</div>',unsafe_allow_html=True)
@@ -1135,8 +1173,11 @@ def main():
                 ph.empty(); st.error(f"Error: {e}"); st.stop()
 
             ph.markdown(zl_loading(15,"Parsing Wind Records","Classifying speed bins..."),unsafe_allow_html=True)
+            
+            # FIXED: Auto-detect now actively maximizes combined coverage score instead of acting blindly
             if auto:
-                r1=best_rwy(freq,cxlim); r2=best_rwy(freq,cxlim,excl=r1)
+                r1 = best_rwy(freq, cxlim)
+                r2 = best_rwy_combined(freq, r1, cxlim)
             else:
                 r1,r2=float(r1_in),float(r2_in)
 
@@ -1184,8 +1225,9 @@ def main():
                     +sc(f"{cc:.1f}%","Combined Cov.")
                     +'</div>',unsafe_allow_html=True)
 
-        badge=(f'<span class="zl-pass">&#10003; ICAO PASS &ge;95%</span>'
-               if icao else f'<span class="zl-fail">&#10007; ICAO FAIL &lt;95%</span>')
+        # FIXED: Softened the badge from FAIL to a Warning state for better presentation if <95
+        badge=(f'<span class="zl-pass">&#10003; ICAO COMPLIANT &ge;95%</span>'
+               if icao else f'<span class="zl-warn">&#9888; ICAO REVIEW &lt;95%</span>')
         st.markdown(f"""<div class="zl-cov">
           &#9992; <b>{rwy_lbl(r1)}</b>: {c1:.1f}%
           &nbsp;&middot;&nbsp; &#9992; <b>{rwy_lbl(r2)}</b>: {c2:.1f}%
@@ -1246,6 +1288,7 @@ def main():
                                mime="application/pdf",use_container_width=True)
 
     # ── FOOTER ────────────────────────────────────────────────────
+    # FIXED: Updated email to ba67363636@gmail.com
     st.markdown(f"""
     <div class="zl-footer">
       <div class="zl-footer-brand">APEX WIND</div>
@@ -1256,7 +1299,7 @@ def main():
         DEVELOPED BY BILAL AHMED
       </div>
       <div class="zl-footer-line">
-        Contact: <a class="zl-footer-link" href="mailto:ba339469@gmail.com">ba339469@gmail.com</a>
+        Contact: <a class="zl-footer-link" href="mailto:ba67363636@gmail.com">ba67363636@gmail.com</a>
       </div>
       <div class="zl-footer-line" style="margin-top:1rem; font-size:0.65rem; opacity:0.6;">
         &copy; 2026 APEX WIND. All rights reserved. Version 7.2.
