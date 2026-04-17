@@ -63,41 +63,41 @@ TBL_IDX    = [1,2,3,4,5,6]
 T2_COLORS  = ["#e0e0e0","#c8d8c8","#ffff00","#ff0000","#0000ff","#008000","#00ffff"]
 T2_NAMES   = ["< 0.97 (Calms)","0.97-4.08","4.08-7.00","7.00-11.08","11.08-17.11","17.11-21.58",">= 21.58"]
 
-# REALISTIC AIRPORT THEME PALETTE
+# NEW AEROSPACE THEME PALETTE
 TH = {
     "dark": {
-        "bg":"#0f172a", "card_css":"rgba(15, 23, 42, 0.8)",
-        "brd_css":"rgba(250, 204, 21, 0.3)", "brd2_css":"rgba(255, 255, 255, 0.1)",
-        "acc":"#facc15", "acc2":"#eab308", 
-        "gold":"#fbbf24", "suc":"#10b981", "dng":"#ef4444",
-        "txt":"#f8fafc", "mut":"#94a3b8",
-        "ibg":"rgba(2, 6, 23, 0.7)", "itxt":"#f8fafc",
-        "pbg":"#020617", "ptxt":"#f8fafc",
-        "psel":"#ca8a04", "phov":"#a16207",
-        "ebg":"rgba(15, 23, 42, 0.9)", "etxt":"#f8fafc",
+        "bg":"#0a1128", "card_css":"rgba(28, 37, 65, 0.6)",
+        "brd_css":"rgba(72, 202, 228, 0.3)", "brd2_css":"rgba(255, 255, 255, 0.08)",
+        "acc":"#48cae4", "acc2":"#00b4d8", # Vibrant Cyan
+        "gold":"#ffb703", "suc":"#00cc66", "dng":"#e63946",
+        "txt":"#ffffff", "mut":"#8d99ae",
+        "ibg":"rgba(11, 19, 43, 0.7)", "itxt":"#ffffff",
+        "pbg":"#0b132b", "ptxt":"#ffffff",
+        "psel":"#0077b6", "phov":"#023e8a",
+        "ebg":"rgba(28, 37, 65, 0.8)", "etxt":"#ffffff",
         "shd":"0 12px 40px rgba(0, 0, 0, 0.7)", "blur":"blur(20px) saturate(120%)",
-        "m_bg":"#0f172a", "m_card":"#1e293b",
-        "m_grid":"#334155", "m_tick":"#94a3b8", "m_title":"#facc15",
-        "m_poly":"#facc15", "m_pfill":"#a16207",
+        "m_bg":"#0a1128", "m_card":"#1c2541",
+        "m_grid":"#3a506b", "m_tick":"#8d99ae", "m_title":"#48cae4",
+        "m_poly":"#48cae4", "m_pfill":"#0077b6",
     },
     "light": {
-        "bg":"#f1f5f9", "card_css":"rgba(255, 255, 255, 0.85)",
-        "brd_css":"rgba(2, 132, 199, 0.25)", "brd2_css":"rgba(0, 0, 0, 0.08)",
-        "acc":"#0284c7", "acc2":"#0369a1",
-        "gold":"#d97706", "suc":"#059669", "dng":"#dc2626",
-        "txt":"#0f172a", "mut":"#475569",
-        "ibg":"rgba(255, 255, 255, 0.9)", "itxt":"#0f172a",
-        "pbg":"#ffffff", "ptxt":"#0f172a",
-        "psel":"#e0f2fe", "phov":"#bae6fd",
-        "ebg":"rgba(241, 245, 249, 0.95)", "etxt":"#0f172a",
-        "shd":"0 12px 36px rgba(2, 132, 199, 0.15)", "blur":"blur(20px) saturate(120%)",
-        "m_bg":"#f8fafc", "m_card":"#ffffff",
-        "m_grid":"#e2e8f0", "m_tick":"#475569", "m_title":"#0284c7",
-        "m_poly":"#0284c7", "m_pfill":"#bae6fd",
+        "bg":"#f4f7f6", "card_css":"rgba(255, 255, 255, 0.75)",
+        "brd_css":"rgba(0, 119, 182, 0.25)", "brd2_css":"rgba(0, 0, 0, 0.06)",
+        "acc":"#0077b6", "acc2":"#03045e", # Ocean Blue
+        "gold":"#f59e0b", "suc":"#059669", "dng":"#dc2626",
+        "txt":"#14213d", "mut":"#5c677d",
+        "ibg":"rgba(255, 255, 255, 0.85)", "itxt":"#14213d",
+        "pbg":"#ffffff", "ptxt":"#14213d",
+        "psel":"#caf0f8", "phov":"#ade8f4",
+        "ebg":"rgba(240, 244, 248, 0.9)", "etxt":"#14213d",
+        "shd":"0 12px 36px rgba(0, 119, 182, 0.15)", "blur":"blur(20px) saturate(120%)",
+        "m_bg":"#f4f7f6", "m_card":"#ffffff",
+        "m_grid":"#e2e8f0", "m_tick":"#5c677d", "m_title":"#0077b6",
+        "m_poly":"#0077b6", "m_pfill":"#caf0f8",
     },
 }
 
-_SS = dict(theme="dark",diagrams={},freq=None,rwy1=None,rwy2=None,
+_SS = dict(theme="light",diagrams={},freq=None,rwy1=None,rwy2=None,
            stats=None,cxlim=19.4,ready=False,show_table=False,
            _file_bytes=None,_file_name=None,_cols=None,
            _file_rows=0,_file_loaded=False,
@@ -116,7 +116,8 @@ def inject_css():
     EBG=T["ebg"]; ETXT=T["etxt"]; PBG=T["pbg"]; PTXT=T["ptxt"]
     
     bg_img = "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2500&auto=format&fit=crop"
-    overlay = "rgba(15, 23, 42, 0.88)" if dk else "rgba(241, 245, 249, 0.88)"
+    # Overlays adjusted for new color theme
+    overlay = "rgba(10, 17, 40, 0.88)" if dk else "rgba(244, 247, 246, 0.88)"
 
     st.markdown(f"""<style>
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
@@ -150,7 +151,7 @@ html,body,.stApp,[data-testid="stApp"],[data-testid="stAppViewContainer"]{{
 #MainMenu,header,footer{{visibility:hidden!important;}}
 *,*::before,*::after{{color:{TXT}!important;-webkit-text-fill-color:{TXT}!important;}}
 .stButton>button,button[data-testid],.zl-step-num{{
-  color:{'#0f172a' if dk else '#ffffff'}!important; -webkit-text-fill-color:{'#0f172a' if dk else '#ffffff'}!important;
+  color:{'#0a1128' if dk else '#ffffff'}!important; -webkit-text-fill-color:{'#0a1128' if dk else '#ffffff'}!important;
 }}
 .zl-lbl,.zl-sv,.zl-step-title,.zl-type-code,.zl-title em,.zl-eyebrow,.zl-chip,
 .zl-footer-brand,.zl-file-banner b,.zl-cov b,.zl-pass,.zl-warn,.zl-fail,.zl-dlbl,.zl-sub,
@@ -175,7 +176,7 @@ html,body,.stApp,[data-testid="stApp"],[data-testid="stAppViewContainer"]{{
 }}
 .stTextInput>div>div>input:focus,.stNumberInput>div>div>input:focus{{
   border-color:{T['acc']}!important; background: {PBG}!important;
-  box-shadow: 0 4px 12px {'rgba(250, 204, 21, 0.2)' if dk else 'rgba(2, 132, 199, 0.2)'}, inset 0 2px 4px rgba(0,0,0,0.05)!important;
+  box-shadow: 0 4px 12px {'rgba(72, 202, 228, 0.2)' if dk else 'rgba(0, 119, 182, 0.2)'}, inset 0 2px 4px rgba(0,0,0,0.05)!important;
   transform: translateY(-1px);
 }}
 .stTextInput>div>div>input::placeholder,.stNumberInput>div>div>input::placeholder{{
@@ -196,7 +197,7 @@ html,body,.stApp,[data-testid="stApp"],[data-testid="stAppViewContainer"]{{
 [data-baseweb="popover"],[data-baseweb="popover"]>div,div[data-baseweb="menu"],ul[data-baseweb="menu"],[data-baseweb="popover"] ul{{
   background-color:{PBG}!important; border:1px solid {T['brd_css']}!important;
   border-radius:12px!important; backdrop-filter: var(--blur);
-  box-shadow: 0 12px 40px {'rgba(0,0,0,0.7)' if dk else 'rgba(2, 132, 199, 0.15)'}!important;
+  box-shadow: 0 12px 40px {'rgba(0,0,0,0.7)' if dk else 'rgba(0, 119, 182, 0.15)'}!important;
 }}
 [data-baseweb="popover"] li,[data-baseweb="popover"] [role="option"],div[data-baseweb="option"],li[data-baseweb="option"]{{
   background:transparent!important; color:{PTXT}!important; -webkit-text-fill-color:{PTXT}!important;
@@ -230,8 +231,8 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
   transition:all .3s cubic-bezier(0.4, 0, 0.2, 1)!important; backdrop-filter: var(--blur)!important;
 }}
 .stButton>button:hover{{
-  border-color: {T['acc']}!important; background: {'rgba(250, 204, 21, 0.1)' if dk else 'rgba(2, 132, 199, 0.08)'}!important;
-  transform:translateY(-2px)!important; box-shadow: 0 8px 24px {'rgba(250, 204, 21, 0.2)' if dk else 'rgba(2, 132, 199, 0.15)'}!important;
+  border-color: {T['acc']}!important; background: {'rgba(72, 202, 228, 0.1)' if dk else 'rgba(0, 119, 182, 0.08)'}!important;
+  transform:translateY(-2px)!important; box-shadow: 0 8px 24px {'rgba(72, 202, 228, 0.2)' if dk else 'rgba(0, 119, 182, 0.15)'}!important;
 }}
 
 /* Glass Download Buttons Fix */
@@ -253,31 +254,31 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
 }}
 .stDownloadButton>button:hover{{
   border-color: {T['acc']}!important;
-  background: {'rgba(250, 204, 21, 0.1)' if dk else 'rgba(2, 132, 199, 0.08)'} !important;
+  background: {'rgba(72, 202, 228, 0.1)' if dk else 'rgba(0, 119, 182, 0.08)'} !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 8px 24px {'rgba(250, 204, 21, 0.2)' if dk else 'rgba(2, 132, 199, 0.15)'} !important;
+  box-shadow: 0 8px 24px {'rgba(72, 202, 228, 0.2)' if dk else 'rgba(0, 119, 182, 0.15)'} !important;
 }}
 
 /* Styled File Uploader */
 [data-testid="stFileUploader"]{{
-  background: {'rgba(2, 6, 23, 0.5)' if dk else 'rgba(255,255,255,0.6)'} !important;
+  background: {'rgba(11, 19, 43, 0.5)' if dk else 'rgba(255,255,255,0.6)'} !important;
   border: 2px dashed {T['brd_css']} !important;
   border-radius: var(--rad) !important; padding: 2rem 1.5rem !important;
   transition: all .3s ease !important; backdrop-filter: var(--blur);
 }}
 [data-testid="stFileUploader"]:hover{{
-  background: {'rgba(250, 204, 21, 0.08)' if dk else 'rgba(2, 132, 199, 0.06)'} !important;
-  border-color: {T['acc']} !important; box-shadow: inset 0 0 20px {'rgba(250, 204, 21, 0.1)' if dk else 'rgba(2, 132, 199, 0.08)'};
+  background: {'rgba(72, 202, 228, 0.08)' if dk else 'rgba(0, 119, 182, 0.06)'} !important;
+  border-color: {T['acc']} !important; box-shadow: inset 0 0 20px {'rgba(72, 202, 228, 0.1)' if dk else 'rgba(0, 119, 182, 0.08)'};
 }}
 [data-testid="stFileDropzoneInstructions"] p,[data-testid="stFileDropzoneInstructions"] span{{
   color:{MUT}!important;-webkit-text-fill-color:{MUT}!important;font-size:.9rem!important;
 }}
 
 /* Alerts */
-.stSuccess{{background:{'rgba(16, 185, 129, 0.1)' if dk else 'rgba(5, 150, 105, 0.08)'}!important; border:1px solid {T['suc']}!important; border-radius:12px!important; backdrop-filter: var(--blur);}}
-.stError{{background:{'rgba(239, 68, 68, 0.1)' if dk else 'rgba(220, 38, 38, 0.08)'}!important; border:1px solid {T['dng']}!important; border-radius:12px!important; backdrop-filter: var(--blur);}}
-.stWarning{{background:{'rgba(251, 191, 36, 0.1)' if dk else 'rgba(217, 119, 6, 0.08)'}!important; border:1px solid {T['gold']}!important; border-radius:12px!important; backdrop-filter: var(--blur);}}
-.stInfo{{background:{'rgba(250, 204, 21, 0.1)' if dk else 'rgba(2, 132, 199, 0.08)'}!important; border:1px solid {T['acc']}!important; border-radius:12px!important; backdrop-filter: var(--blur);}}
+.stSuccess{{background:{'rgba(0, 204, 102, 0.1)' if dk else 'rgba(5, 150, 105, 0.08)'}!important; border:1px solid {T['suc']}!important; border-radius:12px!important; backdrop-filter: var(--blur);}}
+.stError{{background:{'rgba(230, 57, 70, 0.1)' if dk else 'rgba(220, 38, 38, 0.08)'}!important; border:1px solid {T['dng']}!important; border-radius:12px!important; backdrop-filter: var(--blur);}}
+.stWarning{{background:{'rgba(255, 183, 3, 0.1)' if dk else 'rgba(245, 158, 11, 0.08)'}!important; border:1px solid {T['gold']}!important; border-radius:12px!important; backdrop-filter: var(--blur);}}
+.stInfo{{background:{'rgba(72, 202, 228, 0.1)' if dk else 'rgba(0, 119, 182, 0.08)'}!important; border:1px solid {T['acc']}!important; border-radius:12px!important; backdrop-filter: var(--blur);}}
 
 /* Images */
 .stImage img,[data-testid="stImage"] img{{
@@ -288,8 +289,8 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
 .zl-hero{{text-align:center; padding:3rem 1rem 1.5rem; position:relative;}}
 .zl-hero-glow{{
   position:absolute; top:0; left:50%; transform:translateX(-50%); width:80%; height:400px;
-  background:{'radial-gradient(ellipse at center,rgba(250, 204, 21, 0.18) 0%,transparent 65%)' if dk
-              else 'radial-gradient(ellipse at center,rgba(2, 132, 199, 0.15) 0%,transparent 65%)'};
+  background:{'radial-gradient(ellipse at center,rgba(72, 202, 228, 0.18) 0%,transparent 65%)' if dk
+              else 'radial-gradient(ellipse at center,rgba(0, 119, 182, 0.15) 0%,transparent 65%)'};
   pointer-events:none; filter: blur(40px);
 }}
 .zl-tag{{
@@ -299,7 +300,7 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
   color:{T['acc']}!important; -webkit-text-fill-color:{T['acc']}!important;
   background: var(--card); border:1px solid {T['brd_css']}; padding:.4rem 1.2rem;
   border-radius:99px; margin-bottom:1.5rem; backdrop-filter: var(--blur);
-  box-shadow: 0 4px 20px {'rgba(250, 204, 21, 0.15)' if dk else 'rgba(2, 132, 199, 0.12)'};
+  box-shadow: 0 4px 20px {'rgba(72, 202, 228, 0.15)' if dk else 'rgba(0, 119, 182, 0.12)'};
 }}
 .zl-dot{{
   display:inline-block; width:6px; height:6px; border-radius:50%; background:{T['acc']};
@@ -330,9 +331,9 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
   transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1); backdrop-filter: var(--blur);
 }}
 .zl-chip:hover{{
-  border-color:{T['acc']}; background: {'rgba(250, 204, 21, 0.08)' if dk else 'rgba(2, 132, 199, 0.05)'};
+  border-color:{T['acc']}; background: {'rgba(72, 202, 228, 0.08)' if dk else 'rgba(0, 119, 182, 0.05)'};
   color:{T['acc']}!important; -webkit-text-fill-color:{T['acc']}!important;
-  transform:translateY(-3px); box-shadow:0 8px 20px {'rgba(250, 204, 21, 0.2)' if dk else 'rgba(2, 132, 199, 0.15)'};
+  transform:translateY(-3px); box-shadow:0 8px 20px {'rgba(72, 202, 228, 0.2)' if dk else 'rgba(0, 119, 182, 0.15)'};
 }}
 
 /* ══ SEGMENTED THEME TOGGLES ═════════════════════ */
@@ -355,19 +356,19 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
     color: {T['acc']} !important; -webkit-text-fill-color: {T['acc']} !important;
 }}
 .zl-theme-active .stButton>button {{
-    background: {'rgba(250, 204, 21, 0.2)' if dk else 'rgba(2, 132, 199, 0.15)'} !important;
+    background: {'rgba(72, 202, 228, 0.2)' if dk else 'rgba(0, 119, 182, 0.15)'} !important;
     color: {T['acc']} !important; -webkit-text-fill-color: {T['acc']} !important;
 }}
 
 /* ══ LAYOUT ELEMENTS ═══════════════════════ */
 .zl-hr{{
   height:1px; margin:2.5rem 0;
-  background:{'linear-gradient(90deg,transparent,rgba(250, 204, 21, 0.4),transparent)' if dk
-              else 'linear-gradient(90deg,transparent,rgba(2, 132, 199, 0.3),transparent)'};
+  background:{'linear-gradient(90deg,transparent,rgba(72, 202, 228, 0.4),transparent)' if dk
+              else 'linear-gradient(90deg,transparent,rgba(0, 119, 182, 0.3),transparent)'};
   border:none; filter: drop-shadow(0 0 5px {T['acc']});
 }}
 .zl-section{{display:flex; align-items:center; gap:1rem; margin:0 0 1.5rem;}}
-.zl-section-line{{flex:1; height:1px; background:{'linear-gradient(90deg, rgba(250, 204, 21, 0.3), transparent)' if dk else 'linear-gradient(90deg, rgba(2, 132, 199, 0.2), transparent)'}; }}
+.zl-section-line{{flex:1; height:1px; background:{'linear-gradient(90deg, rgba(72, 202, 228, 0.3), transparent)' if dk else 'linear-gradient(90deg, rgba(0, 119, 182, 0.2), transparent)'}; }}
 .zl-lbl{{
   font-family:'Syne',sans-serif; font-size:1.3rem; font-weight:800; letter-spacing:-.01em;
   color:{TXT}!important; -webkit-text-fill-color:{TXT}!important; white-space:nowrap;
@@ -384,7 +385,7 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
   background: {g}; opacity: 0.9;
 }}
 .zl-info-card{{
-  background:{'linear-gradient(135deg, rgba(250, 204, 21, 0.1), rgba(2, 6, 23, 0.5))' if dk else 'linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(255, 255, 255, 0.7))'};
+  background:{'linear-gradient(135deg, rgba(72, 202, 228, 0.1), rgba(11, 19, 43, 0.5))' if dk else 'linear-gradient(135deg, rgba(0, 119, 182, 0.08), rgba(255, 255, 255, 0.7))'};
   border:1px solid {T['brd_css']}; border-radius:12px; padding:1rem 1.2rem; margin-bottom:1.5rem;
   backdrop-filter: var(--blur); border-left: 4px solid {T['acc']};
 }}
@@ -410,10 +411,10 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
 .zl-step:last-child{{border-bottom:none;}}
 .zl-step-num{{
   width:36px; height:36px; border-radius:10px; flex-shrink:0; background:{g};
-  color:{'#0f172a' if dk else '#ffffff'}!important; -webkit-text-fill-color:{'#0f172a' if dk else '#ffffff'}!important;
+  color:{'#0a1128' if dk else '#ffffff'}!important; -webkit-text-fill-color:{'#0a1128' if dk else '#ffffff'}!important;
   font-family:'Syne',sans-serif; font-size:1rem; font-weight:800;
   display:flex; align-items:center; justify-content:center;
-  box-shadow: 0 4px 15px {'rgba(250, 204, 21, 0.4)' if dk else 'rgba(2, 132, 199, 0.3)'};
+  box-shadow: 0 4px 15px {'rgba(72, 202, 228, 0.4)' if dk else 'rgba(0, 119, 182, 0.3)'};
 }}
 .zl-step-title{{
   font-family:'Syne',sans-serif; font-size:1.05rem; font-weight:700;
@@ -433,7 +434,7 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
 }}
 .zl-type-card:hover{{
   border-color:{T['acc']}; transform:translateY(-6px);
-  box-shadow: 0 15px 35px {'rgba(0,0,0,0.7)' if dk else 'rgba(2, 132, 199, 0.2)'};
+  box-shadow: 0 15px 35px {'rgba(0,0,0,0.7)' if dk else 'rgba(0, 119, 182, 0.2)'};
 }}
 .zl-type-card:hover::before {{ opacity: 1; }}
 .zl-type-code{{
@@ -452,11 +453,11 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
   font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:.2rem .6rem; border-radius:6px;
 }}
 .zl-badge-t1{{
-  background:{'rgba(250, 204, 21, 0.15)' if dk else 'rgba(2, 132, 199, 0.12)'};
+  background:{'rgba(72, 202, 228, 0.15)' if dk else 'rgba(0, 119, 182, 0.12)'};
   color:{T['acc']}!important; -webkit-text-fill-color:{T['acc']}!important;
 }}
 .zl-badge-t2{{
-  background:{'rgba(16,185,129,0.15)' if dk else 'rgba(5,150,105,0.12)'};
+  background:{'rgba(0, 204, 102, 0.15)' if dk else 'rgba(5, 150, 105, 0.12)'};
   color:{T['suc']}!important; -webkit-text-fill-color:{T['suc']}!important;
 }}
 
@@ -492,15 +493,15 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
   letter-spacing:.1em; text-transform:uppercase; padding:4px 12px; border-radius:99px;
 }}
 .zl-pass{{
-  background:{'rgba(16,185,129,0.15)' if dk else 'rgba(5,150,105,0.12)'}; border:1px solid {T['suc']};
+  background:{'rgba(0, 204, 102, 0.15)' if dk else 'rgba(5, 150, 105, 0.12)'}; border:1px solid {T['suc']};
   color:{T['suc']}!important; -webkit-text-fill-color:{T['suc']}!important;
 }}
 .zl-fail{{
-  background:{'rgba(239,68,68,0.15)' if dk else 'rgba(220,38,38,0.12)'}; border:1px solid {T['dng']};
+  background:{'rgba(230, 57, 70, 0.15)' if dk else 'rgba(220, 38, 38, 0.12)'}; border:1px solid {T['dng']};
   color:{T['dng']}!important; -webkit-text-fill-color:{T['dng']}!important;
 }}
 .zl-warn{{
-  background:{'rgba(251,191,36,0.15)' if dk else 'rgba(217,119,6,0.12)'}; border:1px solid {T['gold']};
+  background:{'rgba(255, 183, 3, 0.15)' if dk else 'rgba(245, 158, 11, 0.12)'}; border:1px solid {T['gold']};
   color:{T['gold']}!important; -webkit-text-fill-color:{T['gold']}!important;
 }}
 
@@ -511,22 +512,22 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
 }}
 .zl-diag-frame{{
   background:#ffffff; border-radius:16px; padding:10px; margin-bottom: 0.8rem;
-  box-shadow: 0 10px 30px {'rgba(0,0,0,0.7)' if dk else 'rgba(2, 132, 199, 0.15)'};
-  border:2px solid {'rgba(250, 204, 21, 0.4)' if dk else 'rgba(2, 132, 199, 0.25)'};
+  box-shadow: 0 10px 30px {'rgba(0,0,0,0.7)' if dk else 'rgba(0, 119, 182, 0.15)'};
+  border:2px solid {'rgba(72, 202, 228, 0.4)' if dk else 'rgba(0, 119, 182, 0.25)'};
 }}
 
 /* ══ PRIMARY GENERATE BUTTON ════════════════════ */
 .zl-gen-wrap .stButton>button{{
-  background:{g}!important; color:{'#0f172a' if dk else '#ffffff'}!important; -webkit-text-fill-color:{'#0f172a' if dk else '#ffffff'}!important;
+  background:{g}!important; color:{'#0a1128' if dk else '#ffffff'}!important; -webkit-text-fill-color:{'#0a1128' if dk else '#ffffff'}!important;
   font-family:'Syne',sans-serif!important; font-size:1.2rem!important; font-weight:800!important;
   letter-spacing:.08em!important; text-transform:uppercase!important;
   padding:1.2rem 2.5rem!important; border-radius:16px!important; border:none!important;
-  box-shadow: 0 8px 30px {'rgba(250, 204, 21, 0.4)' if dk else 'rgba(2, 132, 199, 0.35)'}!important;
+  box-shadow: 0 8px 30px {'rgba(72, 202, 228, 0.4)' if dk else 'rgba(0, 119, 182, 0.35)'}!important;
   transition: all 0.3s ease !important; position:relative; overflow:hidden;
 }}
 .zl-gen-wrap .stButton>button:hover{{
   transform:translateY(-4px)!important;
-  box-shadow: 0 15px 40px {'rgba(250, 204, 21, 0.6)' if dk else 'rgba(2, 132, 199, 0.5)'}!important;
+  box-shadow: 0 15px 40px {'rgba(72, 202, 228, 0.6)' if dk else 'rgba(0, 119, 182, 0.5)'}!important;
 }}
 
 /* ══ AIRCRAFT LOADING ANIMATION ═════════════════════ */
@@ -539,7 +540,7 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
 .takeoff-plane {{
   position: absolute; font-size: 48px; color: {T['acc']}!important; -webkit-text-fill-color: {T['acc']}!important;
   bottom: 10px; left: -20%; animation: flyplane 2.8s ease-in infinite;
-  filter: drop-shadow(0 4px 8px rgba(250, 204, 21, 0.6));
+  filter: drop-shadow(0 4px 8px rgba(72, 202, 228, 0.6));
 }}
 .takeoff-rwy {{ position: absolute; bottom: 10px; left: 0; width: 100%; height: 4px; background: {'rgba(255,255,255,0.2)' if dk else 'rgba(0,0,0,0.2)'}; border-radius: 4px; }}
 .takeoff-rwy::after {{
@@ -563,7 +564,7 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
   color:{T['acc']}!important; -webkit-text-fill-color:{T['acc']}!important; letter-spacing:.15em; margin-bottom:1.5rem;
 }}
 .zl-load-bar-outer{{
-  width:300px; height:6px; background:{'rgba(250, 204, 21, 0.15)' if dk else 'rgba(2, 132, 199, 0.15)'};
+  width:300px; height:6px; background:{'rgba(72, 202, 228, 0.15)' if dk else 'rgba(0, 119, 182, 0.15)'};
   border-radius:99px; overflow:hidden; margin-bottom:1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
 }}
 .zl-load-bar-fill{{ height:100%; border-radius:99px; background:{g}; transition:width .35s cubic-bezier(.4,0,.2,1); box-shadow: 0 0 10px {T['acc']}; }}
@@ -584,7 +585,7 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
 }}
 .zl-tbl{{width:100%; border-collapse:collapse; font-family:'JetBrains Mono',monospace; font-size:.75rem; border-radius:10px; overflow:hidden;}}
 .zl-tbl th{{
-  background:{'rgba(2, 6, 23, 0.9)' if dk else 'rgba(2, 132, 199, 0.9)'}!important;
+  background:{'rgba(11, 19, 43, 0.9)' if dk else 'rgba(0, 119, 182, 0.9)'}!important;
   color:#ffffff!important; -webkit-text-fill-color:#ffffff!important;
   padding:10px 12px; letter-spacing:.06em; font-size:.7rem; text-align:center; font-weight:700;
   border-bottom:3px solid {T['acc']};
@@ -596,13 +597,13 @@ div[data-testid="stCheckbox"] p,div[data-testid="stRadio"] p{{
 }}
 .zl-tbl td.dc{{
   font-weight:700; text-align:left; color:{T['acc']}!important; -webkit-text-fill-color:{T['acc']}!important;
-  background:{'rgba(250, 204, 21, 0.05)' if dk else 'rgba(2, 132, 199, 0.05)'}!important;
+  background:{'rgba(72, 202, 228, 0.05)' if dk else 'rgba(0, 119, 182, 0.05)'}!important;
 }}
-.zl-tbl tr:nth-child(even) td{{background:{'rgba(255,255,255,0.02)' if dk else 'rgba(2, 132, 199, 0.03)'}!important;}}
-.zl-tbl tr:hover td{{background:{'rgba(250, 204, 21, 0.08)' if dk else 'rgba(2, 132, 199, 0.08)'}!important;}}
+.zl-tbl tr:nth-child(even) td{{background:{'rgba(255,255,255,0.02)' if dk else 'rgba(0, 119, 182, 0.03)'}!important;}}
+.zl-tbl tr:hover td{{background:{'rgba(72, 202, 228, 0.08)' if dk else 'rgba(0, 119, 182, 0.08)'}!important;}}
 .zl-tbl tr.trow td{{
   font-weight:800; border-top:3px solid {T['acc']};
-  background:{'rgba(250, 204, 21, 0.12)' if dk else 'rgba(2, 132, 199, 0.1)'}!important; border-bottom:none;
+  background:{'rgba(72, 202, 228, 0.12)' if dk else 'rgba(0, 119, 182, 0.1)'}!important; border-bottom:none;
   color:{T['acc']}!important; -webkit-text-fill-color:{T['acc']}!important;
 }}
 
@@ -1029,10 +1030,10 @@ def main():
       </div>
     </div>""",unsafe_allow_html=True)
 
-    # ── UPLOAD & CONFIG ───────────────────────────────────────────
+    # ── UPLOAD & CONFIG (Card Container Removed) ───────────────────
     st.markdown('<div class="zl-hr"></div>',unsafe_allow_html=True)
     st.markdown(section("Upload &amp; Configure"),unsafe_allow_html=True)
-    st.markdown('<div class="zl-card">',unsafe_allow_html=True)
+    
     st.markdown('<div class="zl-sub">Wind Data File</div>',unsafe_allow_html=True)
 
     uploaded=st.file_uploader("Upload file",type=["csv","xlsx","xls"],
@@ -1077,7 +1078,6 @@ def main():
         with m2: spd_col=st.selectbox("Speed Column",cols,index=si,key="scol")
         with m3: dir_fmt=st.selectbox("Direction Format",["Degrees (0-360)","Compass (N, NNE ...)"],key="dfmt")
         
-        # FIXED: Set default input speed unit to knots (index 1)
         with m4: spd_unit=st.selectbox("Input Speed Unit",["km/h","knots","m/s"],index=1,key="sunit")
 
         st.markdown("<br>",unsafe_allow_html=True)
@@ -1102,12 +1102,11 @@ def main():
         with d4: s_t2m=st.checkbox("Type II — Multi",value=True,key="ct2m")
         sel={"t1s":s_t1s,"t1m":s_t1m,"t2s":s_t2s,"t2m":s_t2m}
 
-    st.markdown('</div>',unsafe_allow_html=True)
 
-    # ── STUDENT DETAILS ───────────────────────────────────────────
+    # ── STUDENT DETAILS (Card Container Removed) ───────────────────
     st.markdown('<div class="zl-hr"></div>',unsafe_allow_html=True)
     st.markdown(section("Engineer &amp; Report Details"),unsafe_allow_html=True)
-    st.markdown('<div class="zl-card">',unsafe_allow_html=True)
+    
     st.markdown(f'<div class="zl-info-card">'
                 f'<span style="font-family:\'JetBrains Mono\',monospace;font-size:.75rem;'
                 f'letter-spacing:.06em;color:{T["mut"]};">'
@@ -1123,7 +1122,7 @@ def main():
     st.markdown("<br>", unsafe_allow_html=True)
 
     ui5,ui6,ui7,ui8=st.columns(4)
-    with ui5: stu_proj=st.text_input("Project Title",key="sproj",value="CE-432 Wind Rose Analysis")
+    with ui5: stu_proj=st.text_input("Project Title",key="sproj",placeholder="e.g. CE-432 Wind Rose Analysis")
     with ui6: stu_inst=st.text_input("Instructor",key="sinst",placeholder="e.g. Dr. Example")
     with ui7: stu_site=st.text_input("Site Location",key="ssite",placeholder="e.g. NEDUET")
     with ui8: stu_dept=st.text_input("Department / Firm",key="sdept",placeholder="e.g. Civil Engineering")
@@ -1133,7 +1132,6 @@ def main():
     lc1, lc2, lc3 = st.columns([1, 2, 1])
     with lc2:
         logo_file=st.file_uploader("Organization Logo (Centered)",type=["png","jpg","jpeg"],key="logo_up",label_visibility="visible")
-    st.markdown('</div>',unsafe_allow_html=True)
 
 
     # ── GENERATE BUTTON ───────────────────────────────────────────
@@ -1174,7 +1172,6 @@ def main():
 
             ph.markdown(zl_loading(15,"Parsing Wind Records","Classifying speed bins..."),unsafe_allow_html=True)
             
-            # FIXED: Auto-detect now actively maximizes combined coverage score instead of acting blindly
             if auto:
                 r1 = best_rwy(freq, cxlim)
                 r2 = best_rwy_combined(freq, r1, cxlim)
@@ -1225,7 +1222,6 @@ def main():
                     +sc(f"{cc:.1f}%","Combined Cov.")
                     +'</div>',unsafe_allow_html=True)
 
-        # FIXED: Softened the badge from FAIL to a Warning state for better presentation if <95
         badge=(f'<span class="zl-pass">&#10003; ICAO COMPLIANT &ge;95%</span>'
                if icao else f'<span class="zl-warn">&#9888; ICAO REVIEW &lt;95%</span>')
         st.markdown(f"""<div class="zl-cov">
@@ -1288,7 +1284,6 @@ def main():
                                mime="application/pdf",use_container_width=True)
 
     # ── FOOTER ────────────────────────────────────────────────────
-    # FIXED: Updated email to ba67363636@gmail.com
     st.markdown(f"""
     <div class="zl-footer">
       <div class="zl-footer-brand">APEX WIND</div>
